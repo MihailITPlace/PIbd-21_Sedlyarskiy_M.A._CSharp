@@ -30,7 +30,7 @@ namespace laba_1
         private void buttonCreate_Click(object sender, EventArgs e)
         {
             Random rnd = new Random();
-            monorail = new Monorail(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.CadetBlue, Color.DarkBlue, true, true);
+            monorail = new Monorail(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Blue, Color.DarkBlue, true, true);
             monorail.SetPosition(rnd.Next(70, 160), rnd.Next(70, 160), pictureBoxMonorails.Width, pictureBoxMonorails.Height);
             Draw();
         }
