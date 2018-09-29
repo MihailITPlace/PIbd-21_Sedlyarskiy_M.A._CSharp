@@ -27,7 +27,7 @@ namespace laba_1
 
         public int MaxSpeed { get; private set; }
 
-        public float                                                                                                                                                          Weight { get; private set; }
+        public float Weight { get; private set; }
 
         public Color MainColor { get; private set; }
 
