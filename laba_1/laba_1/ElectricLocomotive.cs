@@ -35,9 +35,6 @@ namespace laba_1
             Brush brMain = new SolidBrush(MainColor);
             g.FillRectangle(brMain, _startPosX, _startPosY, 70, 45);
 
-            //Brush brAdd = new SolidBrush(AddColor);
-            //g.FillRectangle(brAdd, _startPosX, _startPosY + 45, 90, 5);
-
             //окна и лобовое стекло
             Brush brAqua = new SolidBrush(Color.Aqua);
             g.FillPie(brAqua, _startPosX + 50, _startPosY, 40, 90, -90, 90);
