@@ -7,14 +7,6 @@ using System.Threading.Tasks;
 
 namespace laba_1
 {
-    public enum Direction
-    {
-        Up,
-        Down,
-        Left,
-        Right,
-    }
-
     class Monorail
     {
         private float _startPosX;
