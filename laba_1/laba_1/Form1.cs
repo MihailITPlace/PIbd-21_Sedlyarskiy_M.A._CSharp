@@ -12,7 +12,7 @@ namespace laba_1
 {
     public partial class FormMonorail : Form
     {
-        private Monorail monorail;
+        private ITransport locomotive;
 
         public FormMonorail()
         {
@@ -21,17 +21,17 @@ namespace laba_1
 
         private void Draw()
         {
-            Bitmap bmp = new Bitmap(pictureBoxMonorails.Width, pictureBoxMonorails.Height);
+            Bitmap bmp = new Bitmap(pictureBoxTransport.Width, pictureBoxTransport.Height);
             Graphics gr = Graphics.FromImage(bmp);
-            monorail.DrawMonorail(gr);
-            pictureBoxMonorails.Image = bmp;
+            locomotive.Draw(gr);
+            pictureBoxTransport.Image = bmp;
         }
 
         private void buttonCreate_Click(object sender, EventArgs e)
         {
             Random rnd = new Random();
-            monorail = new Monorail(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Blue, Color.DarkBlue, true, true);
-            monorail.SetPosition(rnd.Next(70, 160), rnd.Next(70, 160), pictureBoxMonorails.Width, pictureBoxMonorails.Height);
+            locomotive = new Monorail(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Blue, Color.DarkBlue, true, true, true);
+            locomotive.SetPosition(rnd.Next(70, 160), rnd.Next(70, 160), pictureBoxTransport.Width, pictureBoxTransport.Height);
             Draw();
         }
 
@@ -44,24 +44,32 @@ namespace laba_1
                 switch (name)
                 {
                     case "buttonUp":
-                        monorail.MoveMonorail(Direction.Up);
+                        locomotive.MoveTransport(Direction.Up);
                         break;
                     case "buttonDown":
-                        monorail.MoveMonorail(Direction.Down);
+                        locomotive.MoveTransport(Direction.Down);
                         break;
                     case "buttonLeft":
-                        monorail.MoveMonorail(Direction.Left);
+                        locomotive.MoveTransport(Direction.Left);
                         break;
                     case "buttonRight":
-                        monorail.MoveMonorail(Direction.Right);
+                        locomotive.MoveTransport(Direction.Right);
                         break;
                 }
                 Draw();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Монорельс не создан");
+                MessageBox.Show("транспорт не создан");
             }
+        }
+
+        private void buttonCreateBase_Click(object sender, EventArgs e)
+        {
+            Random rnd = new Random();
+            locomotive = new ElectricLocomotive(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Blue);
+            locomotive.SetPosition(rnd.Next(70, 160), rnd.Next(70, 160), pictureBoxTransport.Width, pictureBoxTransport.Height);
+            Draw();
         }
     }
 }

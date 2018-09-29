@@ -33,17 +33,18 @@
             this.buttonLeft = new System.Windows.Forms.Button();
             this.buttonRight = new System.Windows.Forms.Button();
             this.buttonUp = new System.Windows.Forms.Button();
-            this.pictureBoxMonorails = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMonorails)).BeginInit();
+            this.pictureBoxTransport = new System.Windows.Forms.PictureBox();
+            this.buttonCreateBase = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTransport)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonCreate
             // 
-            this.buttonCreate.Location = new System.Drawing.Point(12, 12);
+            this.buttonCreate.Location = new System.Drawing.Point(151, 12);
             this.buttonCreate.Name = "buttonCreate";
-            this.buttonCreate.Size = new System.Drawing.Size(60, 50);
+            this.buttonCreate.Size = new System.Drawing.Size(133, 34);
             this.buttonCreate.TabIndex = 1;
-            this.buttonCreate.Text = "Создать";
+            this.buttonCreate.Text = "Создать монорельс";
             this.buttonCreate.UseVisualStyleBackColor = true;
             this.buttonCreate.Click += new System.EventHandler(this.buttonCreate_Click);
             // 
@@ -95,42 +96,54 @@
             this.buttonUp.UseVisualStyleBackColor = true;
             this.buttonUp.Click += new System.EventHandler(this.buttonMove_Click);
             // 
-            // pictureBoxMonorails
+            // pictureBoxTransport
             // 
-            this.pictureBoxMonorails.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxMonorails.Location = new System.Drawing.Point(0, 0);
-            this.pictureBoxMonorails.Name = "pictureBoxMonorails";
-            this.pictureBoxMonorails.Size = new System.Drawing.Size(884, 461);
-            this.pictureBoxMonorails.TabIndex = 0;
-            this.pictureBoxMonorails.TabStop = false;
+            this.pictureBoxTransport.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBoxTransport.Location = new System.Drawing.Point(0, 0);
+            this.pictureBoxTransport.Name = "pictureBoxTransport";
+            this.pictureBoxTransport.Size = new System.Drawing.Size(884, 461);
+            this.pictureBoxTransport.TabIndex = 0;
+            this.pictureBoxTransport.TabStop = false;
+            // 
+            // buttonCreateBase
+            // 
+            this.buttonCreateBase.Location = new System.Drawing.Point(12, 12);
+            this.buttonCreateBase.Name = "buttonCreateBase";
+            this.buttonCreateBase.Size = new System.Drawing.Size(133, 34);
+            this.buttonCreateBase.TabIndex = 6;
+            this.buttonCreateBase.Text = "Создать электровоз";
+            this.buttonCreateBase.UseVisualStyleBackColor = true;
+            this.buttonCreateBase.Click += new System.EventHandler(this.buttonCreateBase_Click);
             // 
             // FormMonorail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 461);
+            this.Controls.Add(this.buttonCreateBase);
             this.Controls.Add(this.buttonDown);
             this.Controls.Add(this.buttonLeft);
             this.Controls.Add(this.buttonRight);
             this.Controls.Add(this.buttonUp);
             this.Controls.Add(this.buttonCreate);
-            this.Controls.Add(this.pictureBoxMonorails);
+            this.Controls.Add(this.pictureBoxTransport);
             this.Name = "FormMonorail";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Монорельс";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMonorails)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTransport)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pictureBoxMonorails;
+        private System.Windows.Forms.PictureBox pictureBoxTransport;
         private System.Windows.Forms.Button buttonCreate;
         private System.Windows.Forms.Button buttonUp;
         private System.Windows.Forms.Button buttonRight;
         private System.Windows.Forms.Button buttonLeft;
         private System.Windows.Forms.Button buttonDown;
+        private System.Windows.Forms.Button buttonCreateBase;
     }
 }
 
