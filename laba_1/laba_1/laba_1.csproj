@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Depot.cs" />
     <Compile Include="Direction.cs" />
     <Compile Include="ElectricLocomotive.cs" />
     <Compile Include="Form1.cs">
@@ -54,6 +55,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormDepot.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDepot.Designer.cs">
+      <DependentUpon>FormDepot.cs</DependentUpon>
+    </Compile>
     <Compile Include="ITransport.cs" />
     <Compile Include="Locomotive.cs" />
     <Compile Include="Monorail.cs" />
@@ -61,6 +68,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDepot.resx">
+      <DependentUpon>FormDepot.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
