@@ -31,11 +31,12 @@
             this.buttonSetElectricLocomotive = new System.Windows.Forms.Button();
             this.buttonSetMonorail = new System.Windows.Forms.Button();
             this.groupBoxTakeTrain = new System.Windows.Forms.GroupBox();
-            this.labelNumberPlace = new System.Windows.Forms.Label();
-            this.buttonTakeTrain = new System.Windows.Forms.Button();
             this.maskedTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.buttonTakeTrain = new System.Windows.Forms.Button();
             this.pictureBoxTakeTrain = new System.Windows.Forms.PictureBox();
+            this.labelNumberPlace = new System.Windows.Forms.Label();
             this.pictureBoxDepot = new System.Windows.Forms.PictureBox();
+            this.listBoxLevels = new System.Windows.Forms.ListBox();
             this.groupBoxTakeTrain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTakeTrain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDepot)).BeginInit();
@@ -44,7 +45,7 @@
             // buttonSetElectricLocomotive
             // 
             this.buttonSetElectricLocomotive.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonSetElectricLocomotive.Location = new System.Drawing.Point(854, 12);
+            this.buttonSetElectricLocomotive.Location = new System.Drawing.Point(854, 148);
             this.buttonSetElectricLocomotive.Name = "buttonSetElectricLocomotive";
             this.buttonSetElectricLocomotive.Size = new System.Drawing.Size(192, 65);
             this.buttonSetElectricLocomotive.TabIndex = 1;
@@ -55,7 +56,7 @@
             // buttonSetMonorail
             // 
             this.buttonSetMonorail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonSetMonorail.Location = new System.Drawing.Point(854, 83);
+            this.buttonSetMonorail.Location = new System.Drawing.Point(854, 219);
             this.buttonSetMonorail.Name = "buttonSetMonorail";
             this.buttonSetMonorail.Size = new System.Drawing.Size(192, 65);
             this.buttonSetMonorail.TabIndex = 2;
@@ -77,14 +78,14 @@
             this.groupBoxTakeTrain.TabStop = false;
             this.groupBoxTakeTrain.Text = "Забрать состав";
             // 
-            // labelNumberPlace
+            // maskedTextBox
             // 
-            this.labelNumberPlace.AutoSize = true;
-            this.labelNumberPlace.Location = new System.Drawing.Point(15, 22);
-            this.labelNumberPlace.Name = "labelNumberPlace";
-            this.labelNumberPlace.Size = new System.Drawing.Size(39, 13);
-            this.labelNumberPlace.TabIndex = 0;
-            this.labelNumberPlace.Text = "Место";
+            this.maskedTextBox.Location = new System.Drawing.Point(60, 19);
+            this.maskedTextBox.Mask = "00";
+            this.maskedTextBox.Name = "maskedTextBox";
+            this.maskedTextBox.Size = new System.Drawing.Size(118, 20);
+            this.maskedTextBox.TabIndex = 3;
+            this.maskedTextBox.ValidatingType = typeof(int);
             // 
             // buttonTakeTrain
             // 
@@ -96,15 +97,6 @@
             this.buttonTakeTrain.UseVisualStyleBackColor = true;
             this.buttonTakeTrain.Click += new System.EventHandler(this.buttonTakeTrain_Click);
             // 
-            // maskedTextBox
-            // 
-            this.maskedTextBox.Location = new System.Drawing.Point(60, 19);
-            this.maskedTextBox.Mask = "00";
-            this.maskedTextBox.Name = "maskedTextBox";
-            this.maskedTextBox.Size = new System.Drawing.Size(118, 20);
-            this.maskedTextBox.TabIndex = 3;
-            this.maskedTextBox.ValidatingType = typeof(int);
-            // 
             // pictureBoxTakeTrain
             // 
             this.pictureBoxTakeTrain.Location = new System.Drawing.Point(18, 83);
@@ -112,6 +104,15 @@
             this.pictureBoxTakeTrain.Size = new System.Drawing.Size(160, 95);
             this.pictureBoxTakeTrain.TabIndex = 1;
             this.pictureBoxTakeTrain.TabStop = false;
+            // 
+            // labelNumberPlace
+            // 
+            this.labelNumberPlace.AutoSize = true;
+            this.labelNumberPlace.Location = new System.Drawing.Point(15, 22);
+            this.labelNumberPlace.Name = "labelNumberPlace";
+            this.labelNumberPlace.Size = new System.Drawing.Size(39, 13);
+            this.labelNumberPlace.TabIndex = 0;
+            this.labelNumberPlace.Text = "Место";
             // 
             // pictureBoxDepot
             // 
@@ -123,11 +124,21 @@
             this.pictureBoxDepot.TabIndex = 0;
             this.pictureBoxDepot.TabStop = false;
             // 
+            // listBoxLevels
+            // 
+            this.listBoxLevels.FormattingEnabled = true;
+            this.listBoxLevels.Location = new System.Drawing.Point(854, 12);
+            this.listBoxLevels.Name = "listBoxLevels";
+            this.listBoxLevels.Size = new System.Drawing.Size(192, 121);
+            this.listBoxLevels.TabIndex = 4;
+            this.listBoxLevels.SelectedIndexChanged += new System.EventHandler(this.listBoxLevels_SelectedIndexChanged);
+            // 
             // FormDepot
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1058, 492);
+            this.Controls.Add(this.listBoxLevels);
             this.Controls.Add(this.groupBoxTakeTrain);
             this.Controls.Add(this.buttonSetMonorail);
             this.Controls.Add(this.buttonSetElectricLocomotive);
@@ -152,5 +163,6 @@
         private System.Windows.Forms.Button buttonTakeTrain;
         private System.Windows.Forms.PictureBox pictureBoxTakeTrain;
         private System.Windows.Forms.Label labelNumberPlace;
+        private System.Windows.Forms.ListBox listBoxLevels;
     }
 }
