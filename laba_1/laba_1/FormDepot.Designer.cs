@@ -116,8 +116,6 @@
             // 
             // pictureBoxDepot
             // 
-            this.pictureBoxDepot.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxDepot.Location = new System.Drawing.Point(0, 0);
             this.pictureBoxDepot.Name = "pictureBoxDepot";
             this.pictureBoxDepot.Size = new System.Drawing.Size(848, 483);
@@ -126,6 +124,7 @@
             // 
             // listBoxLevels
             // 
+            this.listBoxLevels.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.listBoxLevels.FormattingEnabled = true;
             this.listBoxLevels.Location = new System.Drawing.Point(854, 12);
             this.listBoxLevels.Name = "listBoxLevels";

@@ -23,15 +23,10 @@ namespace laba_1
 
         public Depot(int sizes, int pictureWidth, int pictureHeight)
         {
-            //_places = new T[sizes];
             _maxCount = sizes;
             _places = new Dictionary<int, T>();
             PictureWidth = pictureWidth;
             PictureHeight = pictureHeight;
-            //for (int i = 0; i < _places.Length; i++)
-            //{
-            //    _places[i] = null;
-            //}
         }
 
         public static int operator +(Depot<T> p, T locomotive)
