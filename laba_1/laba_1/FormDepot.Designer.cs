@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.buttonSetElectricLocomotive = new System.Windows.Forms.Button();
-            this.buttonSetMonorail = new System.Windows.Forms.Button();
             this.groupBoxTakeTrain = new System.Windows.Forms.GroupBox();
             this.maskedTextBox = new System.Windows.Forms.MaskedTextBox();
             this.buttonTakeTrain = new System.Windows.Forms.Button();
@@ -37,32 +35,11 @@
             this.labelNumberPlace = new System.Windows.Forms.Label();
             this.pictureBoxDepot = new System.Windows.Forms.PictureBox();
             this.listBoxLevels = new System.Windows.Forms.ListBox();
+            this.buttonSetTrain = new System.Windows.Forms.Button();
             this.groupBoxTakeTrain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTakeTrain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDepot)).BeginInit();
             this.SuspendLayout();
-            // 
-            // buttonSetElectricLocomotive
-            // 
-            this.buttonSetElectricLocomotive.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonSetElectricLocomotive.Location = new System.Drawing.Point(854, 148);
-            this.buttonSetElectricLocomotive.Name = "buttonSetElectricLocomotive";
-            this.buttonSetElectricLocomotive.Size = new System.Drawing.Size(192, 65);
-            this.buttonSetElectricLocomotive.TabIndex = 1;
-            this.buttonSetElectricLocomotive.Text = "Добавить локомотив";
-            this.buttonSetElectricLocomotive.UseVisualStyleBackColor = true;
-            this.buttonSetElectricLocomotive.Click += new System.EventHandler(this.buttonSetElectricLocomotive_Click);
-            // 
-            // buttonSetMonorail
-            // 
-            this.buttonSetMonorail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonSetMonorail.Location = new System.Drawing.Point(854, 219);
-            this.buttonSetMonorail.Name = "buttonSetMonorail";
-            this.buttonSetMonorail.Size = new System.Drawing.Size(192, 65);
-            this.buttonSetMonorail.TabIndex = 2;
-            this.buttonSetMonorail.Text = "Добавить монорельс";
-            this.buttonSetMonorail.UseVisualStyleBackColor = true;
-            this.buttonSetMonorail.Click += new System.EventHandler(this.buttonSetMonorail_Click);
             // 
             // groupBoxTakeTrain
             // 
@@ -132,15 +109,24 @@
             this.listBoxLevels.TabIndex = 4;
             this.listBoxLevels.SelectedIndexChanged += new System.EventHandler(this.listBoxLevels_SelectedIndexChanged);
             // 
+            // buttonSetTrain
+            // 
+            this.buttonSetTrain.Location = new System.Drawing.Point(854, 139);
+            this.buttonSetTrain.Name = "buttonSetTrain";
+            this.buttonSetTrain.Size = new System.Drawing.Size(192, 65);
+            this.buttonSetTrain.TabIndex = 5;
+            this.buttonSetTrain.Text = "Добавить состав";
+            this.buttonSetTrain.UseVisualStyleBackColor = true;
+            this.buttonSetTrain.Click += new System.EventHandler(this.buttonSetTrain_Click);
+            // 
             // FormDepot
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1058, 492);
+            this.Controls.Add(this.buttonSetTrain);
             this.Controls.Add(this.listBoxLevels);
             this.Controls.Add(this.groupBoxTakeTrain);
-            this.Controls.Add(this.buttonSetMonorail);
-            this.Controls.Add(this.buttonSetElectricLocomotive);
             this.Controls.Add(this.pictureBoxDepot);
             this.Name = "FormDepot";
             this.Text = "Депо";
@@ -155,13 +141,12 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBoxDepot;
-        private System.Windows.Forms.Button buttonSetElectricLocomotive;
-        private System.Windows.Forms.Button buttonSetMonorail;
         private System.Windows.Forms.GroupBox groupBoxTakeTrain;
         private System.Windows.Forms.MaskedTextBox maskedTextBox;
         private System.Windows.Forms.Button buttonTakeTrain;
         private System.Windows.Forms.PictureBox pictureBoxTakeTrain;
         private System.Windows.Forms.Label labelNumberPlace;
         private System.Windows.Forms.ListBox listBoxLevels;
+        private System.Windows.Forms.Button buttonSetTrain;
     }
 }

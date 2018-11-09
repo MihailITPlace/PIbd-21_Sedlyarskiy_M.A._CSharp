@@ -34,5 +34,10 @@ namespace laba_1
         public abstract void Draw(Graphics g);
 
         public abstract void MoveTransport(Direction direction);
+
+        public void SetMainColor(Color color)
+        {
+            MainColor = color;
+        }
     }
 }

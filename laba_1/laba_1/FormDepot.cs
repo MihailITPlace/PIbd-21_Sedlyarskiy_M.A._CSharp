@@ -13,6 +13,7 @@ namespace laba_1
     public partial class FormDepot : Form
     {
         MultiLevelDepot depot;
+        FormTrainConfig form;
 
         private const int countLevel = 5;
 
@@ -104,6 +105,29 @@ namespace laba_1
         private void listBoxLevels_SelectedIndexChanged(object sender, EventArgs e)
         {
             Draw();
+        }
+
+        private void buttonSetTrain_Click(object sender, EventArgs e)
+        {
+            form = new FormTrainConfig();
+            form.AddEvent(AddTrain);
+            form.Show();
+        }
+
+        private void AddTrain(ITransport train)
+        {
+            if (train != null && listBoxLevels.SelectedIndex > -1)
+            {
+                int place = depot[listBoxLevels.SelectedIndex] + train;
+                if (place > -1)
+                {
+                    Draw();
+                }
+                else
+                {
+                    MessageBox.Show("Состав не удалось поставить");
+                }
+            }
         }
     }
 }

@@ -6,11 +6,14 @@ using System.Windows.Forms;
 
 namespace laba_1
 {
+    public delegate void trainDelegate(ITransport train);
+
     static class Program
     {
         /// <summary>
         /// Главная точка входа для приложения.
-        /// </summary>
+        /// </summary>        
+
         [STAThread]
         static void Main()
         {

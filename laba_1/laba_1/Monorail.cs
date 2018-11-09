@@ -29,7 +29,12 @@ namespace laba_1
             BackSpoiler = backSpoiler;
             TopStabilizer = topStabilizer;
             MaxTonnage = maxTonnage;
-        }        
+        }
+
+        public void SetAddColor(Color color)
+        {
+            AddColor = color;
+        }
 
         public override void Draw(Graphics g)
         {
@@ -45,7 +50,7 @@ namespace laba_1
 
             if (BackSpoiler)
             {
-                Brush spoiler = new SolidBrush(Color.Black);
+                Brush spoiler = new SolidBrush(AddColor);
                 g.FillRectangle(spoiler, _startPosX, _startPosY, 5, 50);
                 g.DrawRectangle(pen, _startPosX, _startPosY, 5, 50);
             }
