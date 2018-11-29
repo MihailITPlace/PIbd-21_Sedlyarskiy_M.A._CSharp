@@ -84,10 +84,10 @@ namespace laba_1
             switch (e.Data.GetData(DataFormats.Text).ToString())
             {
                 case "Электричка":
-                    train = new ElectricLocomotive(100, 500, Color.White);
+                    train = new ElectricLocomotive(100, 500, Color.FromArgb(250,250,250));
                     break;
                 case "Монорельс":
-                    train = new Monorail(100, 500, Color.White, Color.Black, true, true, true, 145);
+                    train = new Monorail(100, 500, Color.FromArgb(250, 250, 250), Color.FromArgb(10, 10, 10), true, true, true, 145);
                     break;
             }
             Draw();

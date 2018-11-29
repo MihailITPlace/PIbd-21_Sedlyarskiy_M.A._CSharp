@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NLog;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,11 +16,15 @@ namespace laba_1
         MultiLevelDepot depot;
         FormTrainConfig form;
 
+        private Logger logger;
+
         private const int countLevel = 5;
 
         public FormDepot()
         {
             InitializeComponent();
+
+            logger = LogManager.GetCurrentClassLogger();
             depot = new MultiLevelDepot(countLevel, pictureBoxDepot.Width, pictureBoxDepot.Height); ;
 
             for (int i = 0; i < countLevel; i++)
@@ -83,21 +88,37 @@ namespace laba_1
             {
                 if (maskedTextBox.Text != "")
                 {
-                    var car = depot[listBoxLevels.SelectedIndex] - Convert.ToInt32(maskedTextBox.Text);
-                    if (car != null)
+                    try
                     {
+                        var train = depot[listBoxLevels.SelectedIndex] - Convert.ToInt32(maskedTextBox.Text);
+                        if (train != null)
+                        {
+                            Bitmap bmp = new Bitmap(pictureBoxTakeTrain.Width, pictureBoxTakeTrain.Height);
+                            Graphics gr = Graphics.FromImage(bmp);
+                            train.SetPosition(5, 5, pictureBoxTakeTrain.Width, pictureBoxTakeTrain.Height);
+                            train.Draw(gr);
+                            pictureBoxTakeTrain.Image = bmp;
+                        }
+                        else
+                        {
+                            Bitmap bmp = new Bitmap(pictureBoxTakeTrain.Width, pictureBoxTakeTrain.Height);
+                            pictureBoxTakeTrain.Image = bmp;
+                        }
+
+                        logger.Info("Изъят поезд " + train.ToString() + " с места " + maskedTextBox.Text);
+
+                        Draw();
+                    }
+                    catch (DepotNotFoundException ex)
+                    {
+                        MessageBox.Show(ex.Message, "Не найдено", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         Bitmap bmp = new Bitmap(pictureBoxTakeTrain.Width, pictureBoxTakeTrain.Height);
-                        Graphics gr = Graphics.FromImage(bmp);
-                        car.SetPosition(5, 5, pictureBoxTakeTrain.Width, pictureBoxTakeTrain.Height);
-                        car.Draw(gr);
                         pictureBoxTakeTrain.Image = bmp;
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        Bitmap bmp = new Bitmap(pictureBoxTakeTrain.Width, pictureBoxTakeTrain.Height);
-                        pictureBoxTakeTrain.Image = bmp;
+                        MessageBox.Show(ex.Message, "Неизвестная ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                    Draw();
                 }
             }
         }
@@ -118,15 +139,21 @@ namespace laba_1
         {
             if (train != null && listBoxLevels.SelectedIndex > -1)
             {
-                int place = depot[listBoxLevels.SelectedIndex] + train;
-                if (place > -1)
+                try
                 {
+                    int place = depot[listBoxLevels.SelectedIndex] + train;
+                    logger.Info("Добавлен поезд " + train.ToString() + " на место " + place);
                     Draw();
+                    
                 }
-                else
+                catch (DepotOverflowException ex)
                 {
-                    MessageBox.Show("Состав не удалось поставить");
+                    MessageBox.Show(ex.Message, "Переполнение", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Неизвестная ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }                 
             }
         }
 
@@ -134,13 +161,19 @@ namespace laba_1
         {
             if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                if (depot.LoadData(openFileDialog.FileName))
+                try
                 {
+                    depot.LoadData(openFileDialog.FileName);
                     MessageBox.Show("Загрузили", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    logger.Info("Загружено из файла " + openFileDialog.FileName);
                 }
-                else
+                catch (DepotOccupiedPlaceException ex)
                 {
-                    MessageBox.Show("Не загрузили", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(ex.Message, "Занятое место", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Неизвестная ошибка при открытии", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 Draw();
             }
@@ -150,13 +183,15 @@ namespace laba_1
         {
             if (saveFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                if (depot.SaveData(saveFileDialog.FileName))
+                try
                 {
+                    depot.SaveData(saveFileDialog.FileName);
                     MessageBox.Show("Сохранение прошло успешно", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    logger.Info("Сохранено в файл " + saveFileDialog.FileName);
                 }
-                else
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Не сохранилось", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(ex.Message, "Неизвестная ошибка при сохранении", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

@@ -59,22 +59,26 @@ namespace laba_1
                         WriteToFile("Level" + Environment.NewLine, fs);
                         for (int i = 0; i < countPlaces; i++)
                         {
-                            var car = level[i];
-                            if (car != null)
+                            try
                             {
-                                //если место не пустое
-                                //Записываем тип поезда
-                                if (car.GetType().Name == "ElectricLocomotive")
+                                var train = level[i];
+                                //Записываем тип мшаины
+                                if (train.GetType().Name == "ElectricLocomotive")
                                 {
                                     WriteToFile(i + ":ElectricLocomotive:", fs);
                                 }
-                                if (car.GetType().Name == "Monorail")
+                                if (train.GetType().Name == "Monorail")
                                 {
                                     WriteToFile(i + ":Monorail:", fs);
                                 }
                                 //Записываемые параметры
-                                WriteToFile(car + Environment.NewLine, fs);
+                                WriteToFile(train + Environment.NewLine, fs);
                             }
+                            catch (Exception ex)
+                            {
+
+                            }
+                            finally { }
                         }
                     }
                 }
@@ -92,7 +96,7 @@ namespace laba_1
         {
             if (!File.Exists(filename))
             {
-                return false;
+                throw new FileNotFoundException();
             }
             string bufferTextFromFile = "";
             using (FileStream fs = new FileStream(filename, FileMode.Open))
@@ -122,7 +126,7 @@ namespace laba_1
             else
             {
                 //если нет такой записи, то это не те данные
-                return false;
+                throw new Exception("Неверный формат файла");
             }
 
             int counter = -1;
