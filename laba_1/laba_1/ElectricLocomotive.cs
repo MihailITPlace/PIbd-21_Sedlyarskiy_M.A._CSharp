@@ -19,7 +19,19 @@ namespace laba_1
             Weight = weight;
             MainColor = mainColor;
         }
- 
+
+        public ElectricLocomotive(string info)
+        {
+            string[] strs = info.Split(';');
+            if (strs.Length == 3)
+            {
+                MaxSpeed = Convert.ToInt32(strs[0]);
+                Weight = Convert.ToInt32(strs[1]);
+                //MainColor = Color.FromName(strs[2]);
+                MainColor = System.Drawing.ColorTranslator.FromHtml(strs[2]);
+            }
+        }
+
         public override void Draw(Graphics g)
         {
             Pen pen = new Pen(Color.Black);
@@ -76,6 +88,11 @@ namespace laba_1
                     }
                     break;
             }
+        }
+
+        public override string ToString()
+        {
+            return MaxSpeed + ";" + Weight + ";" + '#' + MainColor.Name;
         }
     }
 }

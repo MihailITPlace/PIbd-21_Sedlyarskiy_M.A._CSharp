@@ -19,7 +19,8 @@ namespace laba_1
 
         public int MaxTonnage { get; private set; }
 
-        public Monorail(int maxSpeed, float weight, Color mainColor, Color addColor, bool magneticCushion, bool backSpoiler, bool topStabilizer, int maxTonnage) : base (maxSpeed, weight, mainColor)
+        public Monorail(int maxSpeed, float weight, Color mainColor, Color addColor,
+            bool magneticCushion, bool backSpoiler, bool topStabilizer, int maxTonnage) : base (maxSpeed, weight, mainColor)
         {
             MaxSpeed = maxSpeed;
             Weight = weight;
@@ -29,6 +30,28 @@ namespace laba_1
             BackSpoiler = backSpoiler;
             TopStabilizer = topStabilizer;
             MaxTonnage = maxTonnage;
+        }
+
+        public Monorail(string info) : base(info)
+        {
+            string[] strs = info.Split(';');
+
+            if (strs.Length == 8)
+            {
+                MaxSpeed = Convert.ToInt32(strs[0]);
+                Weight = Convert.ToInt32(strs[1]);
+
+                //MainColor = Color.FromName(strs[2]);
+                //AddColor = Color.FromName(strs[3]);
+                MainColor = System.Drawing.ColorTranslator.FromHtml(strs[2]);
+                AddColor = System.Drawing.ColorTranslator.FromHtml(strs[3]);
+
+                MagneticCushion = Convert.ToBoolean(strs[4]);
+                BackSpoiler = Convert.ToBoolean(strs[5]);
+                TopStabilizer = Convert.ToBoolean(strs[6]);
+
+                MaxTonnage = Convert.ToInt32(strs[7]);
+            }
         }
 
         public void SetAddColor(Color color)
@@ -63,6 +86,10 @@ namespace laba_1
             }
         }
 
+        public override string ToString()
+        {
+            return base.ToString() + ';' + '#' + AddColor.Name + ';' + MagneticCushion + ';' 
+                + BackSpoiler + ';' + TopStabilizer + ';' + MaxTonnage;
+        }        
     }
 }
-
