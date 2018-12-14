@@ -27,6 +27,7 @@ namespace laba_1
             {
                 MaxSpeed = Convert.ToInt32(strs[0]);
                 Weight = Convert.ToInt32(strs[1]);                             
+
                 MainColor = System.Drawing.ColorTranslator.FromHtml(strs[2]);
             }
         }
