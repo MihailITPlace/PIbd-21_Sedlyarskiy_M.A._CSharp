@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace laba_1
 {
-    class Monorail : ElectricLocomotive
+    class Monorail : ElectricLocomotive, IComparable<Monorail>, IEquatable<Monorail>
     {
         public Color AddColor { get; private set; }
 
@@ -88,6 +88,80 @@ namespace laba_1
         {
             return base.ToString() + ';' + '#' + AddColor.Name + ';' + MagneticCushion + ';' 
                 + BackSpoiler + ';' + TopStabilizer + ';' + MaxTonnage;
-        }        
+        }
+
+        public bool Equals(Monorail other)
+        {
+            var res = (this as ElectricLocomotive).Equals(other as ElectricLocomotive);
+            if (!res)
+            {
+                return res;
+            }
+            if (AddColor != other.AddColor)
+            {
+                return false;
+            }
+            if (MagneticCushion != other.MagneticCushion)
+            {
+                return false;
+            }
+            if (TopStabilizer != other.TopStabilizer)
+            {
+                return false;
+            }
+            if (BackSpoiler != other.BackSpoiler)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public override bool Equals(Object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+            Monorail monorailObj = obj as Monorail;
+            if (monorailObj == null)
+            {
+                return false;
+            }
+            else
+            {
+                return Equals(monorailObj);
+            }
+        }
+
+        public int CompareTo(Monorail other)
+        {
+            var res = (this is ElectricLocomotive).CompareTo(other is ElectricLocomotive);
+            if (res != 0)
+            {
+                return res;
+            }
+            if (AddColor != other.AddColor)
+            {
+                AddColor.Name.CompareTo(other.AddColor.Name);
+            }
+            if (MagneticCushion != other.MagneticCushion)
+            {
+                return MagneticCushion.CompareTo(other.MagneticCushion);
+            }
+            if (TopStabilizer != other.TopStabilizer)
+            {
+                return TopStabilizer.CompareTo(other.TopStabilizer);
+            }
+            if (BackSpoiler != other.BackSpoiler)
+            {
+                return BackSpoiler.CompareTo(other.BackSpoiler);
+            }
+            return 0;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 }

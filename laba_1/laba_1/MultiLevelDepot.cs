@@ -41,7 +41,7 @@ namespace laba_1
             }
         }
 
-        public bool SaveData(string filename)
+        public void SaveData(string filename)
         {
             if (File.Exists(filename))
             {
@@ -57,33 +57,23 @@ namespace laba_1
                     {
                         //Начинаем уровень
                         WriteToFile("Level" + Environment.NewLine, fs);
-                        for (int i = 0; i < countPlaces; i++)
+                        foreach (var loc in level)
                         {
-                            try
+                            //Записываем тип мшаины
+                            if (loc.GetType().Name == "ElectricLocomotive")
                             {
-                                var train = level[i];
-                                //Записываем тип мшаины
-                                if (train.GetType().Name == "ElectricLocomotive")
-                                {
-                                    WriteToFile(i + ":ElectricLocomotive:", fs);
-                                }
-                                if (train.GetType().Name == "Monorail")
-                                {
-                                    WriteToFile(i + ":Monorail:", fs);
-                                }
-                                //Записываемые параметры
-                                WriteToFile(train + Environment.NewLine, fs);
+                                WriteToFile(":ElectricLocomotive:", fs);
                             }
-                            catch (Exception ex)
+                            if (loc.GetType().Name == "Monorail")
                             {
-
+                                WriteToFile(":Monorail:", fs);
                             }
-                            finally { }
+                            //Записываемые параметры
+                            WriteToFile(loc + Environment.NewLine, fs);
                         }
                     }
                 }
             }
-            return true;
         }
 
         private void WriteToFile(string text, FileStream stream)
@@ -156,6 +146,11 @@ namespace laba_1
                 depotStages[counter][Convert.ToInt32(strs[i].Split(':')[0])] = train;
             }
             return true;
+        }
+
+        public void Sort()
+        {
+            depotStages.Sort();
         }
     }
 }

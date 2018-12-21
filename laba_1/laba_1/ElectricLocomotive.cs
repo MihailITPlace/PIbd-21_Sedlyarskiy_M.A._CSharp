@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace laba_1
 {
-    class ElectricLocomotive : Locomotive
+    class ElectricLocomotive : Locomotive, IComparable<ElectricLocomotive>, IEquatable<ElectricLocomotive>
     {
         protected const int monorailWidth = 100;
 
@@ -93,6 +93,70 @@ namespace laba_1
         public override string ToString()
         {
             return MaxSpeed + ";" + Weight + ";" + '#' + MainColor.Name;
+        }
+
+        public int CompareTo(ElectricLocomotive other)
+        {
+            if (other == null)
+            {
+                return 1;
+            }
+            if (MaxSpeed != other.MaxSpeed)
+            {
+                return MaxSpeed.CompareTo(other.MaxSpeed);
+            }
+            if (Weight != other.Weight)
+            {
+                return Weight.CompareTo(other.Weight);
+            }
+            if (MainColor != other.MainColor)
+            {
+                MainColor.Name.CompareTo(other.MainColor.Name);
+            }
+            return 0;
+        }
+
+        public bool Equals(ElectricLocomotive other)
+        {
+            if (other == null)
+            {
+                return false;
+            }
+            if (MaxSpeed != other.MaxSpeed)
+            {
+                return false;
+            }
+            if (Weight != other.Weight)
+            {
+                return false;
+            }
+            if (MainColor != other.MainColor)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public override bool Equals(Object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+            ElectricLocomotive elecLocObj = obj as ElectricLocomotive;
+            if (elecLocObj == null)
+            {
+                return false;
+            }
+            else
+            {
+                return Equals(elecLocObj);
+            }
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
     }
 }
